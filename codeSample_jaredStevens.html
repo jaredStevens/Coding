@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <v-app >
+      <v-content>
+        <v-container>
+          <v-toolbar>
+            <v-spacer></v-spacer>
+            <v-toolbar-title>Code Sample - Jared Stevens</v-toolbar-title>
+            <v-spacer></v-spacer>
+          </v-toolbar>
+          <v-spacer></v-spacer>
+          <!-- Part 1 -->
+          <v-flex>
+          <v-card class="pa-2 my-5">
+            <v-card-title>
+              <h2>Part 1: Form with Validation</h2>
+            </v-card-title>
+            <v-divider></v-divider>
+            <v-card-text>
+            <v-form ref="form" v-model="valid" lazy-validation>
+              <div>
+              <v-text-field
+              label="User Name"
+              outline
+              placeholder="User Name"
+              v-model="userName"
+              :rules="userNameRules"
+              >
+              </v-text-field>
+              </div>
+              <div>
+              <v-text-field label="Password"
+                outline
+                type="password"
+                placeholder="Password"
+                v-model="password"
+                required
+                :rules="passwordRules"
+                :counter="15"
+                >
+              </v-text-field>
+              </div>
+              <div>
+              <v-text-field label="Phone Number"
+                outline
+                placeholder="Phone Number"
+                v-model="phoneNumber"
+                required
+                type="number"
+                maxLength="10"
+                :rules="phoneNumberRules"
+                counter="10"
+                >
+              </v-text-field>
+              </div>
+              <div>
+              <v-text-field label="Location"
+                outline
+                placeholder="Ex: Houston, TX"
+                v-model="geogLocation"
+                required
+                :rules="geogLocationRules"
+                >
+              </v-text-field>
+              </div>
+              <v-divider></v-divider>
+              <div>
+                <v-btn large depressed type="submit" class="primary" @click.prevent="register()" :disabled="!valid">Register</v-btn>
+              </div>
+            </v-form>
+            </v-card-text>
+          </v-card>
+          </v-flex>
+          <!--Part 1-->
+          <!--Part 2-->
+          <v-flex>
+            <v-card class="pa-2 my-5">
+              <v-card-title>
+                <h2>Part 2: Dialog Modal</h2>
+              </v-card-title>
+              <v-divider></v-divider>
+            <v-dialog v-model="dialog"
+              width="500">
+              <template v-slot:activator="{ on }">
+                <v-flex class="pt-3">
+                <v-btn
+                  class="primary"
+                  large
+                  depressed
+                  v-on="on">
+                  Find Out More
+                </v-btn>
+                </v-flex>
+              </template>
+
+              <v-card>
+                <v-card-title class="primary"
+                  primary-title>
+                  <h2>Modal Popup</h2>
+                </v-card-title>
+                <v-spacer/>
+                <v-card-text>
+                  <p>Fluorescent lights mala beads geodesic dome fractal nature of, dharma perineum light energy sarong nectar singing bowl
+                  therapy. Juicy biomat superfood tofu, occupy enneagram psilocybin. Psychic surgery compostable toilet biodiesel personal
+                  development prayerformance rites of passage tincture watsu cosmic, blessed homeopathy. Maypole jasmine solstice papasan
+                  indigenous elders raw cacao, breathwork animal totem yoga master downward dog projecting.</p>
+                </v-card-text>
+                <v-divider></v-divider>
+
+                <v-card-actions>
+                  <v-btn color="red"
+                    large
+                    text
+                    @click="dialog = false">
+                    Cancel
+                  </v-btn>
+                  <v-spacer></v-spacer>
+                  <v-btn
+                    color="primary"
+                    large
+                    text
+                    @click="proceed">
+                    Proceed to Website
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+            </v-card>
+          </v-flex>
+          <!--Part 2-->
+          <!--Part 3-->
+          <v-flex>
+            <v-card class="pa-2 my-5">
+              <v-card-title>
+                <h2>Part 3: The Array</h2>
+              </v-card-title>
+              <v-divider></v-divider>
+                <v-card-text>
+                  <h3>Secret Message:</h3>
+                  <p>"Thaisb ics athee tsorngt tnhast oneovear fenadsp pyeis pito g oeis tone a nd oin amy fari enodsi S omae ape opaler s
+                  taart edu s inggi ngo itt nioth kano wi ngo wrhait sith wrash A nda tohe y awipllo cron tipnuie tsi ng in g sith fror
+                  evtert juustt abelca usle"</p>
+                  </v-card-text>
+                  <v-divider></v-divider>
+                  <v-card-actions>
+                    <v-btn @click="decodedMessage()"large depressed class="primary" :disabled="disabled">Decode Message</v-btn>
+                  </v-card-actions>
+                  <v-divider></v-divider>
+                  <v-card-text>
+                  <h3>Decoded Message:</h3><p>{{hidden}}</p>
+                </v-card-text>
+            </v-card>
+          </v-flex>
+          <!--Part 3-->
+          <!--Part 4-->
+              <div class="row">
+                <h1 class="center">Part 4: Flickr Search</h1>
+              </div>
+
+              <!-- SEARCH BLOCK -->
+              <div class="row">
+                <div class="one-half column offset-by-three">
+                  <v-text-field
+                    outline
+                    v-model="query"
+                    debounce="500"
+                    class="u-full-width"
+                    placeholder="Search Flickr"></v-text-field>
+                </div>
+              </div>
+
+              <!-- RESULTS BLOCK -->
+              <div class="row">
+                <div id="no-results"
+                  v-if="images.length === 0">
+                  <p class="center">Your results will appear here</p>
+                </div>
+                <div id="loading"></div>
+                <div id="search-results">
+                  <div class="flickr-image"
+                    v-for="image in images">
+                    <div class="thumbnail">
+                      <a :href="image.link"
+                        target="_blank">
+                      <img src="https://via.placeholder.com/50"
+                        style="width: 100%;"
+                        v-img="image.media.m">
+                      </a>
+                    </div>
+                    <div class="author">
+                      <a :href="image.link"
+                        target="_blank">{{ image.author }}</a>
+                    </div>
+                    <div class="tags"
+                      v-if="image.tags">
+                      <div class="tag"
+                        v-for="tag in filters.splitTags(image.tags)">{{ tag }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <!--Part 4-->
+        </v-container>
+      </v-content>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/vue.resource/0.9.3/vue-resource.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/lodash@4.17.15"></script>
+
+  <script>
+    var callApiTimeout = null;
+    var vm =  new Vue({
+      el: '#app',
+      name: 'CodeSample',
+      vuetify: new Vuetify(),
+      data() {
+        return {
+          images: [],
+          query: '',
+          message: ['T', 'h', 'a', 'i', 's', 'b', ' ', 'i', 'c', 's', ' ', 'a', 't', 'h', 'e', 'e', ' ', 't', 's', 'o', 'r', 'n', 'g', 't', ' ', 't', 'n', 'h', 'a', 's', 't', ' ', 'o', 'n', 'e', 'o', 'v', 'e', 'a', 'r', ' ', 'f', 'e', 'n', 'a', 'd', 's', 'p', ',', ' ', 'p', 'y', 'e', 'i', 's', ' ', 'p', 'i', 't', 'o', ' ', 'g', ' ', 'o', 'e', 'i', 's', ' ', 't', 'o', 'n', 'e', ' ', 'a', ' ', 'n', 'd', ' ', ' ', 'o', 'i', 'n', ' ', 'a', 'm', 'y', ' ', ' ', 'f', 'a', 'r', 'i', ' ', 'e', 'n', 'o', 'd', 's', 'i', ' ', 'S', ' ', 'o', 'm', 'a', 'e', ' ', 'a', 'p', 'e', ' ', 'o', 'p', 'a', 'l', 'e', 'r', ' ', 's', ' ', 't', 'a', 'a', 'r', 't', ' ', 'e', 'd', 'u', ' ', 's', ' ', 'i', 'n', 'g', 'g', 'i', ' ', 'n', 'g', 'o', ' ', 'i', 't', 't', ',', ' ', ' ', 'n', 'i', 'o', 't', 'h', ' ', 'k', 'a', 'n', 'o', ' ', 'w', 'i', ' ', 'n', 'g', 'o', ' ', 'w', 'r', 'h', 'a', 'i', 't', ' ', 's', 'i', 't', 'h', ' ', 'w', 'r', 'a', 's', 'h', ' ', 'A', ' ', 'n', 'd', 'a', ' ', 't', 'o', 'h', 'e', ' ', 'y', ' ', 'a', 'w', 'i', 'p', 'l', 'l', 'o', ' ', 'c', 'r', 'o', 'n', ' ', 't', 'i', 'p', 'n', 'u', 'i', 'e', ' ', 't', 's', 'i', ' ', 'n', 'g', ' ', 'i', 'n', ' ', 'g', ' ', 's', 'i', 't', 'h', ' ', 'f', 'r', 'o', 'r', ' ', 'e', 'v', 't', 'e', 'r', 't', ' ', 'j', 'u', 'u', 's', 't', 't', ' ', 'a', 'b', 'e', 'l', 'c', 'a', ' ', 'u', 's', 'l', 'e', '.'],
+          hidden: '',
+          valid: false,
+          disabled: false,
+          userName: '',
+          password: '',
+          phoneNumber: '',
+          geogLocation: '',
+          mask: '(###) ###-####',
+          userNameRules: [
+            v => !!v || 'Field is Required',
+            v => (v && /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*/.test(v)) || 'Must contain 1 uppper- and lowercase and at least 1 number.'
+          ],
+          passwordRules: [
+            v => !!v || 'Field is Required',
+            v => (v && /^(?=.*[a-zA-Z])(?=.*\d{2,}).{8,15}$/.test(v)) || 'Password must be between 8 to 15 characters and 2 digits.'
+          ],
+          phoneNumberRules: [
+            v => !!v || 'Field is required',
+            v => (v && v.length >= 10 && v.length <= 11) ||
+              'Please enter a valid phone number'
+          ],
+          geogLocationRules: [
+            v => !!v || 'Field is Required',
+            v => (v && /([A-Za-z]+(?: [A-Za-z]+)*)\,? ([A-Za-z]{2})/.test(v)) || 'Must be in City, State(2) format'
+          ],
+          dialog: false
+        }
+      },
+      watch: {
+        query: function (value) {
+          clearTimeout(callApiTimeout);
+          callApiTimeout = setTimeout(function () {
+            var reqURL = "https://api.flickr.com/services/feeds/photos_public.gne";
+            var options = {
+              params: {
+                format: 'json',
+                tags: this.query
+              }
+            };
+
+            this.$http.jsonp(reqURL, options);
+          }.bind(this), 250);
+        }
+      },
+      methods: {
+      register() {
+        if (this.$refs.form.validate()){
+            alert('Thank for filling out the form!')
+            window.open("https://www.google.com")
+          }
+      },
+      decodedMessage() {
+        this.disabled = false
+        var len = this.message.length
+        for (var i = 2; i <= len; i += 2) {
+          this.message.splice(i, 1)
+        }
+        this.hidden = this.message.join('','.')
+        this.disabled = true
+        },
+      proceed() {
+        window.open("https://www.google.com")
+        this.dialog = false
+      }
+    }
+  })
+  function jsonFlickrFeed(response) {
+    vm.$data.images = response.items
+  }
+  function lazyload(el, binding) {
+    var img = new Image();
+    img.src = binding.value;
+
+    img.onload = function () {
+      el.src = binding.value;
+    }
+  }
+  Vue.directive('img', {
+      inserted: function (el, binding) {
+        lazyload(el, binding);
+      },
+      update: function (el, binding) {
+        lazyload(el, binding);
+      }
+    }),
+  Vue.prototype.filters = {
+      splitTags: function (value) {
+        return value.split(' ').slice(0, 5);
+      }
+    }
+</script>
+</body>
+</html>
+
+<style scoped>
+
+.author {
+  line-height: 2rem;
+  margin-bottom: 1.5rem;
+  }a {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+.author a:hover{
+  color: #128fdc;
+}
+
+
+.tag {
+  float: left;
+  margin: 2px;
+  color: #1E88E5;
+  border: 1px solid #128fdc;
+  padding: 0.15rem 0.3rem;
+  border-radius: 5px;
+}
+.tag:hover {
+    background-color: #128fdc;
+    color: white;
+  }
+
+#search-results {
+  -moz-column-width: 13em;
+  -webkit-column-width: 13em;
+  column-width: 13em;
+  -moz-column-gap: 1em;
+  -webkit-column-gap: 1em;
+  column-gap: 1em;
+  }.flickr-image {
+    display: inline-block;
+    margin:  0.25rem;
+    padding:  1rem;
+    width:  100%;
+    background:  #efefef;
+  }
+
+#search-results {
+  -moz-column-width: 13em;
+  -webkit-column-width: 13em;
+  column-width: 13em;
+  -moz-column-gap: 1em;
+  -webkit-column-gap: 1em;
+  column-gap: 1.5em;
+}.flickr-image {
+    display: inline-block;
+    margin:  0.25rem;
+    padding:  1rem;
+    width:  100%;
+  }
+
+.center {
+  text-align: center;
+}
+
+*, *:before, *:after {
+  box-sizing:  border-box !important;
+}
+</style>
