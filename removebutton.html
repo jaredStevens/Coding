@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Interview Practice</title>
+</head>
+
+<body>
+<div id="buttons">
+<button id="update" onclick="updateButtons()">Button</button>
+</div>
+<div class="third">
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div>7</div>
+<div>8</div>
+<div>9</div>
+<div>10</div>
+<div>11</div>
+<div>12</div>
+</div>
+<script>
+  function updateButtons() {
+    let el = document.getElementById('update')
+    el.remove()
+
+    let btn = document.createElement("button");
+    btn.innerText = "Stop";
+    btn.style.backgroundColor = 'red';
+    btn.style.color ='white';
+    document.getElementById('buttons').appendChild(btn)
+
+    let btn2 = document.createElement("button");
+    btn2.innerHTML = 'Proceed';
+    btn2.style.backgroundColor = "green";
+    btn2.style.color = 'white';
+    document.getElementById('buttons').appendChild(btn2)
+  }
+</script>
+<style>
+
+button {
+  display: inline-flex;
+  margin: 10px 0;
+  border: 1px yellow groove;
+  width: 200px;
+  justify-content: center;
+}
+
+div{
+  margin-top: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+div.third :nth-child(1) {
+  background-color: red;
+  color: white;
+} div.third :nth-child(3n) {
+  background-color: blue;
+  color: white;
+}
+
+</style>
+</body>
+</html>
+
+
