@@ -8,7 +8,7 @@
 
 <body>
 <div id="buttons">
-<button id="update" onclick="updateButtons()">Button</button>
+<button id="update" onclick="updateButtons()">First</button>
 </div>
 <div class="third">
 <div>1</div>
@@ -30,13 +30,13 @@
     el.remove()
 
     let btn = document.createElement("button");
-    btn.innerText = "Stop";
+    btn.innerText = "Second";
     btn.style.backgroundColor = 'red';
     btn.style.color ='white';
     document.getElementById('buttons').appendChild(btn)
 
     let btn2 = document.createElement("button");
-    btn2.innerHTML = 'Proceed';
+    btn2.innerHTML = 'Third';
     btn2.style.backgroundColor = "green";
     btn2.style.color = 'white';
     document.getElementById('buttons').appendChild(btn2)

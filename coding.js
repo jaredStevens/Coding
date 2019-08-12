@@ -165,4 +165,4 @@ Person.prototype.language = "English";
 console.log(Person.prototype)
 Person.prototype.nationality = "USA";
 console.log(Person.prototype)
-console.log(mySelf)
+console.log(mySelf.nationality) //?

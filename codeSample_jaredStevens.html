@@ -224,6 +224,9 @@
       el: '#app',
       name: 'CodeSample',
       vuetify: new Vuetify(),
+      created() {
+        this.$vuetify.theme.dark = true
+      },
       data() {
         return {
           images: [],
