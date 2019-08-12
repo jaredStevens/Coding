@@ -27,7 +27,7 @@ mySalary.lower()
 mySalary.current() //?
 
 
-var makeCounter = function () {
+var makeCounter = () => {
   var privateCounter = 0;
   function changeBy(val) {
     privateCounter += val;

@@ -99,8 +99,7 @@ fluffykins.levelUp() //?
 fluffykins.attack() //?
 
 function FizzBuzz () {
-  var i;
-  for (i = 1; i <= 100; i++) {
+  for (var i = 1; i <= 100; i++) {
     if (i % 15 == 0) {
     console.log(i, "FizzBuzz")
     } else if (i % 5 == 0) {
@@ -108,12 +107,33 @@ function FizzBuzz () {
     } else if (i % 3 == 0) {
     console.log(i, "Buzz");
     } else {
-    console.log(i, "None");
+    console.log(i, "None"); //
     }
   }
 }
 
 FizzBuzz();
+
+//Promise
+
+function loadImage(url){
+  return new Promise(function(resolve, reject){
+    var image = new Image();
+    image.src = url;
+    image.onload = function() {
+      resolve(image);
+    };
+    image.onerror = function (){
+      reject(new Error(`Could not load image at ${url}`))
+    }
+  })
+}
+
+loadImage.then(function (result) {
+  console.log("Success!", result);
+}).catch(function (error) {
+  console.log("Failed!", error);
+})
 
 //Bubble Sort
 // var items = [9, 8, 5, 6, 3, 2, 1, 7, 4, 10]
