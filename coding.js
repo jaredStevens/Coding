@@ -106,7 +106,7 @@ function updateButtons() {
 }
 
 function isLegal(age) {
-  if(age <= 13) {
+  if(age <= 18) {
     return "Get out of here!"
   }
   if(age >= 21) {
@@ -120,6 +120,16 @@ function isLegal(age) {
 isLegal(12) //?
 isLegal(20) //?
 isLegal(22) //?
+
+function sleepIn(day) {
+  if (day == 'Saturday' || day == 'Sunday') {
+    return 'Feel free to sleep in!'
+  } else {
+    return 'Get up for work!!!'
+  }
+}
+
+sleepIn('Sunday') //?
 
 
 
@@ -158,7 +168,7 @@ function Person(first, last, age, eyeColor) {
 
 var mySelf = new Person('Jared', 'Stevens', 35, 'hazel')
 var myFather = new Person('Paul', 'Stevens', 66, 'green')
-var myMotehr = new Person('Angela', 'Stevens', 65, 'green')
+var myMother = new Person('Angela', 'Stevens', 65, 'green')
 
 console.log(mySelf.language)
 Person.prototype.language = "English";
@@ -166,3 +176,4 @@ console.log(Person.prototype)
 Person.prototype.nationality = "USA";
 console.log(Person.prototype)
 console.log(mySelf.nationality) //?
+console.log(myMother, myMother.nationality, myMother.language)

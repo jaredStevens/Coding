@@ -129,7 +129,7 @@ function loadImage(url){
   })
 }
 
-loadImage.then(function (result) {
+loadImage().then(function (result) {
   console.log("Success!", result);
 }).catch(function (error) {
   console.log("Failed!", error);

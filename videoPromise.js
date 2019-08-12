@@ -47,7 +47,7 @@ console.dir(addTo)
 //Closure
 
 var addTo = function (passed) {
-  var add = function (innner) {
+  var add = function (inner) {
     return passed + inner;
   };
   return add;
