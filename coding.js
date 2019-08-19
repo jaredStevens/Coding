@@ -109,7 +109,7 @@ function isLegal(age) {
   if(age <= 18) {
     return "Get out of here!"
   }
-  if(age >= 21) {
+  else if(age >= 21) {
     return "You can have a drink"
   }
   else {
@@ -117,7 +117,7 @@ function isLegal(age) {
   }
 }
 
-isLegal(12) //?
+isLegal(18) //?
 isLegal(20) //?
 isLegal(22) //?
 

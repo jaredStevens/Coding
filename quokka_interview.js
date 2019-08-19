@@ -1,12 +1,12 @@
-var myArray = ['a', 'b', 'c', 'd']
-myArray.push('end')
-myArray.unshift('start')
-console.log(myArray)
+// var myArray = ['a', 'b', 'c', 'd']
+// myArray.push('end')
+// myArray.unshift('start')
+// console.log(myArray)
 
 
-myArray2 = [1, 2, 3, 4]
-myArray2 = [0, ...myArray2, 5]
-console.log(myArray2)
+// myArray2 = [1, 2, 3, 4]
+// myArray2 = [0, ...myArray2, 5]
+// console.log(myArray2)
 
 //How do you create a private variable in JavaScript?
 
@@ -135,14 +135,70 @@ loadImage().then(function (result) {
   console.log("Failed!", error);
 })
 
-//Bubble Sort
-// var items = [9, 8, 5, 6, 3, 2, 1, 7, 4, 10]
-// function bubblesort(items) {
-//   //index length of 9
-//   var arrayLength = items.length;
-//   //stop looping over array
-//   //step one
-//   for (let firstLoopPosition = 0; firstLoopPosition < arrayLength; firstLoopPosition++) {
-//     console.log("outer count:" + firstLoopPosition)
-//   }
-// }
+//Multiply Arrays
+//#1
+var luckyNumbers = [3, 5, 7, 9];
+for (var i = 0; i < luckyNumbers.length; i++) {
+  luckyNumbers[i] = luckyNumbers[i] * 2;
+  }
+console.log(luckyNumbers);
+
+//#2
+var originalArray = [3, 5, 7, 9];
+var newArray = []
+var len = originalArray.length
+for (var i = 0; i < len; i++) {
+  newArray[i] = originalArray[i] * 2;
+}
+console.log(newArray);
+
+//#3
+var numbers = [2, 4, 6].map(function(x){
+  return x * 5
+})
+console.log(numbers)
+
+
+// //Sort Array of Objects
+let employees = [
+  {
+    firstName: "Eric",
+    lastName: 'Stevens',
+    age: 40,
+    department: 'Mechanical Engineering'
+  },
+  {
+    firstName: "Paul",
+    lastName: 'Stevens',
+    age: 66,
+    department: 'Accounting'
+  },
+  {
+    firstName: "Angela",
+    lastName: 'Stevens',
+    age: 65,
+    department: 'Management'
+  },
+  {
+    firstName: "Bryan",
+    lastName: 'Stevens',
+    age: 42,
+    department: 'Legal'
+  },
+  {
+    firstName: 'Tyler',
+    lastName: 'Stevens',
+    age: 38,
+    department: 'Accounting'
+  },
+  {
+    firstName: 'Jared',
+    lastName: 'Stevens',
+    age: 34,
+    department: 'Software Engineering'
+  }
+]
+
+let result = employees.map(({age}) => age).sort() //?
+
+console.log(result.reverse())
