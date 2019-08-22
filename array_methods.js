@@ -31,8 +31,8 @@ reverseOrder.reverse()
 console.log("reverse():", reverseOrder)
 
 // //CONCAT() Join two arrays together
-var students = ["Bryan", "Eric", "Tyler", "Jared"]
-var teachers = ["Paul", "Angela"]
+var students = ["Bill", "Bob", "Sam", "Joe"]
+var teachers = ["Jack", "Jill"]
 var people = teachers.concat(students)
 console.log("concat():", people)
 
@@ -41,7 +41,7 @@ var fruits = ["Banana", "Orange", "Apple", "Mango"];
 console.log("constructor:", fruits.constructor);
 var a = 33
 console.log("constructor:", a.constructor)
-var b = "Jared"
+var b = "Joe"
 console.log("constructor:", b.constructor)
 var c = {greeting: "hello"}
 console.log("constructor:", c.constructor)
@@ -191,18 +191,18 @@ var b = fruits.lastIndexOf("Apple") //?
 //MAP()
 var persons = [
   {
-    firstName: "Jared",
-    lastName: "Benjamin",
+    firstName: "John Doe",
+    lastName: "Doe",
     address: {
-      street: '1329 Delano Street',
-      city: 'Houston',
-      state: 'TX',
-      zip: 77003
+      street: '123 Main Street',
+      city: 'Nowhere',
+      state: 'IA',
+      zip: 12345
     }
   },
-  { firstName: "Bryan", lastName: "Paul", address: {street: "123 Main Street", city: 'Sunnyvale', state: 'TX', zip: 77000}},
-  { firstName: "Eric", lastName: "John", address: { street: "123 Main Street", city: 'Sunnyvale', state: 'TX', zip: 77000 } },
-  { firstName: "Tyler", lastName: "Eugene", address: { street: '20418 Misty Crossing Lane', city: 'Spring', state: 'TX', zip: 77379 }}
+  { firstName: "Joe", lastName: "Johnson", address: {street: "123 Main Street", city: 'Sunnyvale', state: 'TX', zip: 12345}},
+  { firstName: "Steve", lastName: "Stevenson", address: { street: "123 Main Street", city: 'Nowhere', state: 'IA', zip: 12345 } },
+  { firstName: "Bill", lastName: "Bobson", address: { street: '123 Main Street', city: 'Nowhere', state: 'IA', zip: 12345 }}
 ];
 
 function getFullName (persons) {
