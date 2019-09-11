@@ -2,7 +2,7 @@
 last in first out LIFO
 functions: push, pop, peek, length */
 
-//palindrone
+//palindrome
 
 var letters = []; // this is our stack
 var word = "racecar"
@@ -19,9 +19,9 @@ for (let i = 0; i < word.length; i++) {
 }
 
 if(rword === word) {
-  console.log(word + " is a palindrone")
+  console.log(word + " is a palindrome")
 }
 
 else {
-  console.log(word + " is not a palindrone")
+  console.log(word + " is not a palindrome")
 }
