@@ -108,11 +108,9 @@ function updateButtons() {
 function isLegal(age) {
   if(age <= 18) {
     return "Get out of here!"
-  }
-  else if(age >= 21) {
+  } else if(age >= 21) {
     return "You can have a drink"
-  }
-  else {
+  } else {
     return "Come back in a Few Years"
   }
 }
@@ -154,14 +152,14 @@ let promiseToClean = new Promise(function(resolve, reject){
 });
 
 promiseToClean.then(function(result){
-  console.log('The room is ' + result + '.')
+  console.log(`The room is ${result}.`)
 }).catch(function(result){
-  console.log('The room is ' + result + '.')
+  console.log(`The room is ${result}.`)
 })
 
-function Person(first, last, age, eyeColor) {
-  this.firstName = first;
-  this.lastName = last;
+function Person(firstName, lastName, age, eyeColor) {
+  this.firstName = firstName;
+  this.lastName = lastName;
   this.age = age;
   this.eyeColor = eyeColor;
 }
